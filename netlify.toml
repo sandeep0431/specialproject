@@ -1,7 +1,7 @@
 # Netlify configuration for the static site
 [build]
-  # publish the project root (contains index.html)
-  publish = "."
+  # publish the mission folder (contains index.html)
+  publish = "mission"
   # no build command needed for this plain static site
   command = ""
 
