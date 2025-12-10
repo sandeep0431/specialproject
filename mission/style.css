@@ -1,0 +1,609 @@
+/* ==========
+   Base styles
+   ========== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Letter page (indigo scheme) */
+  --bg-gradient-letter: linear-gradient(135deg, #e0e7ff, #f3f4f6);
+  --primary-color-letter: #6366f1;
+  --primary-dark-letter: #4f46e5;
+  --accent-soft-letter: #ddd6fe;
+  --shadow-soft-letter: 0 15px 40px rgba(99, 102, 241, 0.2);
+  
+  /* Song page (romantic pink/magenta scheme) */
+  --bg-gradient-song: linear-gradient(135deg, #ffc6ff, #ffe5f1);
+  --primary-color: #ff8fa3;
+  --primary-dark: #ff6f91;
+  --accent-soft: #ffe4ec;
+  --shadow-soft: 0 15px 40px rgba(255, 143, 163, 0.25);
+  
+  /* Shared */
+  --text-main: #4a4a4a;
+  --text-muted: #7a7a7a;
+  --card-bg: #ffffff;
+  --radius-large: 18px;
+  --radius-pill: 999px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Poppins", system-ui, -apple-system, blinkmacsystemfont,
+    "Segoe UI", sans-serif;
+  color: var(--text-main);
+}
+
+body.page {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ==========
+   Page-specific color schemes
+   ========== */
+
+/* Letter page - Indigo scheme */
+body.page-letter {
+  --primary-color: var(--primary-color-letter);
+  --primary-dark: var(--primary-dark-letter);
+  --accent-soft: var(--accent-soft-letter);
+  --shadow-soft: var(--shadow-soft-letter);
+}
+
+body.page-letter .flying-hearts .heart {
+  color: rgba(99, 102, 241, 0.5);
+}
+
+/* ==========
+   Flying hearts
+   ========== */
+
+.flying-hearts {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.flying-hearts .heart {
+  position: absolute;
+  color: rgba(255, 143, 163, 0.5);
+  font-size: 28px;
+}
+
+/* ==========
+   Background hearts
+   ========== */
+
+.background-hearts {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.7) 0, transparent 50%),
+    radial-gradient(circle at 80% 0%, rgba(255, 214, 255, 0.8) 0, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(255, 234, 246, 0.8) 0, transparent 55%);
+  pointer-events: none;
+}
+
+.page-letter {
+  background-image: var(--bg-gradient-letter);
+}
+
+.page-song {
+  background-image: var(--bg-gradient-song);
+}
+
+.background-hearts::before,
+.background-hearts::after {
+  content: "♥";
+  position: absolute;
+  font-size: 32px;
+  color: rgba(255, 143, 163, 0.4);
+  animation: floatHeart 12s linear infinite;
+}
+
+.background-hearts::before {
+  top: 80%;
+  left: 10%;
+}
+
+.background-hearts::after {
+  top: 10%;
+  right: 15%;
+  animation-duration: 16s;
+}
+
+/* Additional flying hearts with different sizes */
+.background-hearts {
+  overflow: hidden;
+}
+
+.background-hearts::before {
+  content: "♥ ♥ ♥ ♥ ♥";
+  font-size: 24px;
+}
+
+.background-hearts::after {
+  content: "♥ ♥ ♥";
+  font-size: 28px;
+  top: 20%;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-160px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Additional floating hearts with varied animations */
+@keyframes floatHeart2 {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-200px) translateX(30px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes floatHeart3 {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-180px) translateX(-40px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes floatHeart4 {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-140px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* ==========
+   Letter page layout
+   ========== */
+
+.letter-wrapper {
+  min-height: 100vh;
+  padding: 32px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.to-heading {
+  font-family: "Dancing Script", cursive;
+  font-size: 2.3rem;
+  margin: 8px 0 24px;
+  color: var(--primary-dark);
+  text-shadow: 0 2px 10px rgba(255, 111, 145, 0.4);
+}
+
+/* Page-letter specific text shadow */
+body.page-letter .to-heading {
+  text-shadow: 0 2px 10px rgba(79, 70, 229, 0.3);
+}
+
+.envelope-area {
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tap-hint {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+}
+
+/* Envelope button */
+
+.envelope {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 auto 20px;
+  display: inline-block;
+  outline: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.envelope-inner {
+  position: relative;
+  /* slightly larger for better visibility */
+  width: 230px;
+  height: 165px;
+  border-radius: calc(var(--radius-large) - 6px);
+  background: #ffe4ec;
+  /* subtle dark border and layered shadows for depth */
+  border: 2px solid rgba(0,0,0,0.06);
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.06),
+    0 10px 22px rgba(255,111,145,0.15),
+    0 18px 36px rgba(255,111,145,0.22),
+    inset 0 2px 6px rgba(255,255,255,0.6);
+  overflow: hidden;
+}
+
+/* Page-letter: indigo envelope */
+body.page-letter .envelope-inner {
+  background: #ddd6fe;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.06),
+    0 10px 22px rgba(99, 102, 241, 0.15),
+    0 18px 36px rgba(99, 102, 241, 0.22),
+    inset 0 2px 6px rgba(255,255,255,0.6);
+}
+
+/* Envelope bottom/body */
+.envelope-inner::before {
+  content: "";
+  position: absolute;
+  inset: 40px 18px 16px;
+  border-radius: 10px;
+  background: #fffbfd;
+}
+
+/* Flap */
+.envelope-flap {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130%;
+  height: 90%;
+  background: linear-gradient(145deg, #ff9fb5, #ff8fa3);
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
+}
+
+/* Page-letter: indigo envelope flap */
+body.page-letter .envelope-flap {
+  background: linear-gradient(145deg, #818cf8, #6366f1);
+}
+
+/* Paper showing out of envelope */
+.envelope-paper {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 55%;
+  background: #fff;
+  border-radius: 12px;
+  border-radius: 28px;
+}
+
+/* Little heart in the center */
+.envelope-heart {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.6rem;
+  color: #fff;
+  text-shadow: 0 3px 8px rgba(255, 111, 145, 0.9);
+}
+
+/* Hover/active states */
+.envelope:focus-visible {
+  outline: 3px solid rgba(255, 111, 145, 0.7);
+  outline-offset: 4px;
+}
+
+.envelope:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+.envelope:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* When opened (class added via JS) */
+.envelope.opened {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.93);
+  pointer-events: none;
+}
+
+/* ==========
+   Letter content box
+   ========== */
+
+.letter-content {
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 18px 22px;
+  background: var(--card-bg);
+  border-radius: 22px;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    0 8px 16px rgba(255, 111, 145, 0.15),
+    0 16px 32px rgba(255, 111, 145, 0.25),
+    0 24px 48px rgba(255, 111, 145, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  border: 3px solid #000000;
+  background: linear-gradient(135deg, #ffffff 0%, #fffbfd 100%);
+  position: relative;
+}
+
+/* Page-letter: indigo shadows for letter-content */
+body.page-letter .letter-content {
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    0 8px 16px rgba(99, 102, 241, 0.15),
+    0 16px 32px rgba(99, 102, 241, 0.25),
+    0 24px 48px rgba(99, 102, 241, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+body.page-letter .letter-content.visible {
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(99, 102, 241, 0.2),
+    0 16px 36px rgba(99, 102, 241, 0.3),
+    0 28px 56px rgba(99, 102, 241, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.letter-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(255, 111, 145, 0.2),
+    0 16px 36px rgba(255, 111, 145, 0.3),
+    0 28px 56px rgba(255, 111, 145, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.letter-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+  color: var(--primary-dark);
+}
+
+.letter-body {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+
+.letter-body p {
+  margin: 0 0 10px;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease,
+    background-color 0.16s ease, color 0.16s ease;
+  font-family: inherit;
+}
+
+/* Main pink button */
+.primary-button {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(255, 111, 145, 0.6);
+  width: 100%;
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(255, 111, 145, 0.7);
+}
+
+.primary-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 5px 14px rgba(255, 111, 145, 0.5);
+}
+
+/* Page-letter: indigo button */
+body.page-letter .primary-button {
+  box-shadow: 0 8px 22px rgba(99, 102, 241, 0.6);
+}
+
+body.page-letter .primary-button:hover {
+  box-shadow: 0 10px 26px rgba(99, 102, 241, 0.7);
+}
+
+body.page-letter .primary-button:active {
+  box-shadow: 0 5px 14px rgba(99, 102, 241, 0.5);
+}
+
+/* Secondary subtle button */
+.secondary-button {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--primary-dark);
+  border: 1px solid rgba(255, 143, 163, 0.4);
+}
+
+.secondary-button:hover {
+  background: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(255, 143, 163, 0.4);
+}
+
+.secondary-button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* Tiny footer note */
+
+.tiny-note {
+  margin-top: auto;
+  padding: 18px 0 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ==========
+   Song page layout
+   ========== */
+
+.song-wrapper {
+  min-height: 100vh;
+  padding: 32px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.song-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.song-header h1 {
+  font-family: "Playfair Display", "Dancing Script", cursive;
+  font-size: 2.2rem;
+  margin: 0 0 8px;
+  color: var(--primary-dark);
+  text-shadow: 0 2px 10px rgba(255, 111, 145, 0.45);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.song-subtext {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+.player-section {
+  display: flex;
+  justify-content: center;
+  margin: 12px auto 18px;
+  width: 100%;
+}
+
+audio {
+  width: 100%;
+  max-width: 380px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 26px rgba(255, 111, 145, 0.35);
+}
+
+/* Small unmute button (bottom-right on song page) */
+/* (cleaned) removed debug/status and unmute button styles */
+
+/* Lyrics card */
+
+.lyrics-section {
+  flex: 1;
+  margin-top: 4px;
+  padding: 18px 16px 18px;
+  background: rgba(220, 72, 163, 0.251);
+  border-radius: 28px;
+  font-family: "Cormorant Garamond", serif;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  font-size: 1.15rem;
+  line-height: 2;
+  overflow-y: auto;
+  max-height: 420px;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.lyrics-section p {
+  margin: 10 0 10px;
+  transition: all 0.3s ease;
+  color: #160101;
+  opacity: 1;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.lyrics-section p.active {
+  color: var(--primary-dark);
+  font-weight: 600;
+  opacity: 1;
+  font-size: 1.3rem;
+  transform: translateX(8px);
+  text-shadow: 0 2px 8px rgba(255, 111, 145, 0.25);
+}
+
+/* Back button inside footer */
+
+.back-button {
+  margin-left: 8px;
+  font-size: 0.78rem;
+  padding: 6px 14px;
+}
+
+/* ==========
+   Responsive tweaks
+   ========== */
+
+@media (min-width: 600px) {
+  .letter-wrapper {
+    padding-top: 40px;
+  }
+
+  .lyrics-section {
+    max-height: 480px;
+  }
+}
+
+@media (min-width: 900px) {
+  .to-heading {
+    font-size: 2.6rem;
+  }
+
+  .song-header h1 {
+    font-size: 2.6rem;
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>A little something for you 💌</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page page-letter">
+  <div class="background-hearts"></div>
+  
+  <!-- Flying hearts container -->
+  <div class="flying-hearts">
+    <span class="heart" style="left: 15%; animation: floatHeart 14s ease-in-out infinite; font-size: 24px;">♥</span>
+    <span class="heart" style="left: 25%; top: 20%; animation: floatHeart2 18s ease-in-out infinite; font-size: 18px;">♥</span>
+    <span class="heart" style="left: 45%; top: 60%; animation: floatHeart3 16s ease-in-out infinite; font-size: 28px;">♥</span>
+    <span class="heart" style="right: 20%; top: 30%; animation: floatHeart4 15s ease-in-out infinite; font-size: 20px;">♥</span>
+    <span class="heart" style="right: 10%; top: 70%; animation: floatHeart 17s ease-in-out infinite; font-size: 26px;">♥</span>
+    <span class="heart" style="left: 5%; top: 40%; animation: floatHeart2 13s ease-in-out infinite; font-size: 22px;">♥</span>
+  </div>
+
+  <main class="letter-wrapper">
+    <h1 class="to-heading">To:  A PERSON I KNOW 💖</h1>
+
+    <div class="envelope-area">
+      <p class="tap-hint">Tap to open your letter 💌</p>
+
+      <!-- Envelope (pure CSS, clickable) -->
+      <button class="envelope" id="envelope" aria-label="Open letter">
+        <div class="envelope-inner">
+          <div class="envelope-flap"></div>
+          <div class="envelope-paper"></div>
+          <div class="envelope-heart">❤</div>
+        </div>
+      </button>
+
+      <!-- Letter content (revealed after click) -->
+      <section class="letter-content" id="letterContent" aria-hidden="true">
+        <h2 class="letter-title">My Heart’s Little Secret</h2>
+
+        <div class="letter-body">
+          <!-- Put your actual text here -->
+          <p>Hey Subhalaxmi,</p>
+          <p>
+            I made this tiny corner of the internet just for you, because sometimes
+            typing feels easier than saying everything out loud.
+          </p>
+          <p>
+            I adore your smile, the way you laugh, the way you make everything feel
+            a little softer and a little brighter just by being there.
+          </p>
+          <p>
+            I’ve been stuck in the liking phase for too long
+             before this year closes, I want to find clarity and calm in my mind.
+          </p>
+          <p>
+            So here’s my silly, shy question, wrapped inside this little letter…
+            Will you be mine? 💕
+          </p>
+        </div>
+
+        <button id="agreeButton" class="primary-button">
+          can we start 2026 to gether!!!
+        </button>
+      </section>
+    </div>
+
+    <footer class="tiny-note">
+      Made only for you. 💫
+    </footer>
+  </main>
+
+  <script src="letter.js"></script>
+</body>
+</html>

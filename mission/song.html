@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our song 🎵</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page page-song">
+  <div class="background-hearts"></div>
+
+  <main class="song-wrapper">
+    <header class="song-header">
+      <h1>This song reminds me of you… 🎶</h1>
+      <p class="song-subtext">
+        Here is my favourite song for the person who is my favourite 💕
+      </p>
+    </header>
+
+    <section class="player-section">
+      <audio id="loveSong" src="assets/music/hindisong.mp3" autoplay preload="auto" controls>
+        Your browser does not support the audio element.
+      </audio>
+    </section>
+
+    <section class="lyrics-section" id="lyricsSection">
+      <p>You are the most beautiful thing I know</p>
+      <p>In this vast universe, you shine so bright</p>
+      <p>I long to wander this dream forever by your side</p>
+      <p>And treasure every stolen glance I get of you</p>
+      <p>This song is dedicated to you, always</p>
+    </section>
+
+    <footer class="tiny-note">
+      With love, always. 💗
+      <button class="secondary-button back-button" onclick="window.location.href='index.html'">
+        ⬅ Back to the letter
+      </button>
+    </footer>
+  </main>
+
+  <script src="song.js"></script>
+</body>
+</html>
