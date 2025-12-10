@@ -1,0 +1,22 @@
+# Netlify configuration for the static site
+[build]
+  # publish the project root (contains index.html)
+  publish = "."
+  # no build command needed for this plain static site
+  command = ""
+
+# Security & general headers for all files
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    X-XSS-Protection = "1; mode=block"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# Example redirects (uncomment and edit if you need pretty URLs or client-side routing)
+# [[redirects]]
+#   from = "/app/*"
+#   to = "/index.html"
+#   status = 200
